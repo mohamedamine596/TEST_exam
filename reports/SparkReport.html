@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">May 4, 2026 06:35:24 pm</span></a>
+<a href="#"><span class="badge badge-primary">May 5, 2026 09:59:29 am</span></a>
 </li>
 </ul>
 </div>
@@ -79,9 +79,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Dropdown Menu Interaction</p>
+            <p class="name">Select Menu Interaction</p>
             <p class="text-sm">
-              <span>18:35:24</span> / <span>00:00:16:706</span>
+              <span>09:59:29</span> / <span>00:00:03:817</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -89,10 +89,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Dropdown Menu Interaction</h5>
-<span class='badge badge-success'>05.04.2026 18:35:24</span>
-<span class='badge badge-danger'>05.04.2026 18:35:41</span>
-<span class='badge badge-default'>00:00:16:706</span>
+<h5 class="test-status text-pass">Select Menu Interaction</h5>
+<span class='badge badge-success'>05.05.2026 09:59:29</span>
+<span class='badge badge-danger'>05.05.2026 09:59:33</span>
+<span class='badge badge-default'>00:00:03:817</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -105,28 +105,23 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Valid - Select a valid menu option</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Valid - Select a valid option</div>
       </div>
     </div>
         <div class="collapse">
           <div class="card-body">
-              <div class="step pass-bg" title="steps.CartSteps.iAmOnDropdownPage()">
-                <span>Given I am on the selenium dropdown page</span>
+              <div class="step pass-bg" title="steps.CartSteps.iAmOnSelectPage()">
+                <span>Given I am on the selenium select page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.CartSteps.hoverOverDropdown()">
-                <span>When I hover over the dropdown menu</span>
+              <div class="step pass-bg" title="steps.CartSteps.selectFromSimple(java.lang.String)">
+                <span>When I select "two" from the simple select</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.CartSteps.clickMenuItem(java.lang.String)">
-                <span>And I click menu item "1"</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="steps.CartSteps.pageShouldBeAccessible()">
-                <span>Then the page should still be accessible</span>
+              <div class="step pass-bg" title="steps.CartSteps.selectedOptionShouldBe(java.lang.String)">
+                <span>Then the selected option should be "two"</span>
       <div>
       </div>
               </div>
@@ -136,7 +131,33 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="9"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Navigate to nonexistent page</div>
+        <div class="node" id="8"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Try selecting a disabled option</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="steps.CartSteps.iAmOnSelectPage()">
+                <span>Given I am on the selenium select page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="steps.CartSteps.trySelectDisabledOption(java.lang.String)">
+                <span>When I try to select disabled option "Disabled"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="steps.CartSteps.selectedOptionShouldRemain(java.lang.String)">
+                <span>Then the selected option should remain "Regular"</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="14"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Navigate to nonexistent page</div>
       </div>
     </div>
         <div class="collapse">
@@ -154,27 +175,6 @@
           </div>
         </div>
   </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="14"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Access dropdown without hovering</div>
-      </div>
-    </div>
-        <div class="collapse">
-          <div class="card-body">
-              <div class="step pass-bg" title="steps.CartSteps.iAmOnDropdownPage()">
-                <span>Given I am on the selenium dropdown page</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="steps.CartSteps.dropdownItemsNotVisibleInitially()">
-                <span>Then the dropdown items should not be visible initially</span>
-      <div>
-      </div>
-              </div>
-          </div>
-        </div>
-  </div>
 </div>
           </div>
         </li>
@@ -185,7 +185,7 @@
           <div class="test-detail">
             <p class="name">Dynamic Table and Data Validation</p>
             <p class="text-sm">
-              <span>18:35:41</span> / <span>00:00:03:959</span>
+              <span>09:59:33</span> / <span>00:00:03:084</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -194,9 +194,9 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Dynamic Table and Data Validation</h5>
-<span class='badge badge-success'>05.04.2026 18:35:41</span>
-<span class='badge badge-danger'>05.04.2026 18:35:45</span>
-<span class='badge badge-default'>00:00:03:959</span>
+<span class='badge badge-success'>05.05.2026 09:59:33</span>
+<span class='badge badge-danger'>05.05.2026 09:59:36</span>
+<span class='badge badge-default'>00:00:03:084</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=19</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -235,7 +235,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="26"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Verify table header exists</div>
+        <div class="node" id="26"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Header should not contain fake column</div>
       </div>
     </div>
         <div class="collapse">
@@ -250,8 +250,8 @@
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.FilterSteps.tableHeaderShouldBePresent()">
-                <span>Then the table header row should be present</span>
+              <div class="step pass-bg" title="steps.FilterSteps.tableHeaderShouldNotContain(java.lang.String)">
+                <span>Then the table header row should not contain "NotAHeader"</span>
       <div>
       </div>
               </div>
@@ -261,7 +261,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="32"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Table data changes on refresh</div>
+        <div class="node" id="32"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Table contains unexpected data</div>
       </div>
     </div>
         <div class="collapse">
@@ -271,13 +271,13 @@
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.FilterSteps.refreshPage()">
-                <span>When I refresh the page</span>
+              <div class="step pass-bg" title="steps.FilterSteps.tableLoads()">
+                <span>When the table loads</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.FilterSteps.tableShouldBePresentAfterRefresh()">
-                <span>Then the table should still be present after refresh</span>
+              <div class="step pass-bg" title="steps.FilterSteps.tableShouldNotContainText(java.lang.String)">
+                <span>Then the table should not contain the text "NotInTable"</span>
       <div>
       </div>
               </div>
@@ -294,7 +294,7 @@
           <div class="test-detail">
             <p class="name">Form Submission and Validation</p>
             <p class="text-sm">
-              <span>18:35:45</span> / <span>00:00:05:130</span>
+              <span>09:59:36</span> / <span>00:00:03:843</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -303,9 +303,9 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Form Submission and Validation</h5>
-<span class='badge badge-success'>05.04.2026 18:35:45</span>
-<span class='badge badge-danger'>05.04.2026 18:35:50</span>
-<span class='badge badge-default'>00:00:05:130</span>
+<span class='badge badge-success'>05.05.2026 09:59:36</span>
+<span class='badge badge-danger'>05.05.2026 09:59:40</span>
+<span class='badge badge-default'>00:00:03:843</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=38</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -354,7 +354,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="47"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Submit form without filling any field</div>
+        <div class="node" id="47"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Attempt to type into disabled input</div>
       </div>
     </div>
         <div class="collapse">
@@ -364,18 +364,13 @@
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.FormSteps.clearAllFields()">
-                <span>When I clear all form fields</span>
+              <div class="step pass-bg" title="steps.FormSteps.attemptTypeIntoDisabled(java.lang.String)">
+                <span>When I attempt to type "Disabled" into the disabled input</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.FormSteps.submitForm()">
-                <span>And I submit the form</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="steps.FormSteps.seeSuccessMessage(java.lang.String)">
-                <span>Then I should see the success message "Form submitted"</span>
+              <div class="step pass-bg" title="steps.FormSteps.disabledInputShouldRemainEmpty()">
+                <span>Then the disabled input value should remain empty</span>
       <div>
       </div>
               </div>
@@ -385,7 +380,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="54"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Enter only spaces in text field</div>
+        <div class="node" id="53"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Attempt to edit readonly input</div>
       </div>
     </div>
         <div class="collapse">
@@ -395,18 +390,13 @@
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.FormSteps.enterText(java.lang.String)">
-                <span>When I enter text "   " in the text field</span>
+              <div class="step pass-bg" title="steps.FormSteps.attemptTypeIntoReadonly(java.lang.String)">
+                <span>When I attempt to type "Changed" into the readonly input</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.FormSteps.submitForm()">
-                <span>And I submit the form</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="steps.FormSteps.seeSuccessMessage(java.lang.String)">
-                <span>Then I should see the success message "Form submitted"</span>
+              <div class="step pass-bg" title="steps.FormSteps.readonlyInputShouldRemain(java.lang.String)">
+                <span>Then the readonly input value should remain "Readonly input"</span>
       <div>
       </div>
               </div>
@@ -416,14 +406,14 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="61"
+        <li class="test-item"  status="pass" test-id="59"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">Input Field Validation</p>
             <p class="text-sm">
-              <span>18:35:50</span> / <span>00:00:03:830</span>
+              <span>09:59:40</span> / <span>00:00:03:446</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -432,10 +422,10 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Input Field Validation</h5>
-<span class='badge badge-success'>05.04.2026 18:35:50</span>
-<span class='badge badge-danger'>05.04.2026 18:35:54</span>
-<span class='badge badge-default'>00:00:03:830</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=61</span>
+<span class='badge badge-success'>05.05.2026 09:59:40</span>
+<span class='badge badge-danger'>05.05.2026 09:59:44</span>
+<span class='badge badge-default'>00:00:03:446</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=59</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
 <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
@@ -447,7 +437,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="62"><span class="badge log pass-bg mr-2">Pass</span>Valid - Text input accepts normal text</div>
+        <div class="node" id="60"><span class="badge log pass-bg mr-2">Pass</span>Valid - Text input accepts normal text</div>
       </div>
     </div>
         <div class="collapse">
@@ -473,7 +463,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="68"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Input field with numbers only</div>
+        <div class="node" id="66"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Number input rejects letters</div>
       </div>
     </div>
         <div class="collapse">
@@ -483,13 +473,13 @@
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.SearchSteps.typeIntoInput(java.lang.String)">
-                <span>When I type "12345" into the input field</span>
+              <div class="step pass-bg" title="steps.SearchSteps.typeIntoNumberInput(java.lang.String)">
+                <span>When I type "abc" into the number input</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.SearchSteps.inputValueShouldBe(java.lang.String)">
-                <span>Then the input field value should be "12345"</span>
+              <div class="step pass-bg" title="steps.SearchSteps.numberInputShouldBeEmpty()">
+                <span>Then the number input value should be empty</span>
       <div>
       </div>
               </div>
@@ -499,7 +489,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="74"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Input field with special characters</div>
+        <div class="node" id="72"><span class="badge log pass-bg mr-2">Pass</span>Invalid - Email input without at sign</div>
       </div>
     </div>
         <div class="collapse">
@@ -509,13 +499,13 @@
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.SearchSteps.typeIntoInput(java.lang.String)">
-                <span>When I type "!@#$%^" into the input field</span>
+              <div class="step pass-bg" title="steps.SearchSteps.typeIntoEmailInput(java.lang.String)">
+                <span>When I type "invalid-email" into the email input</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="steps.SearchSteps.inputValueShouldBe(java.lang.String)">
-                <span>Then the input field value should be "!@#$%^"</span>
+              <div class="step pass-bg" title="steps.SearchSteps.emailInputShouldBeInvalid()">
+                <span>Then the email input should be invalid</span>
       <div>
       </div>
               </div>
@@ -539,13 +529,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>May 4, 2026 06:35:24 pm</h3>
+<h3>May 5, 2026 09:59:29 am</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>May 4, 2026 06:35:54 pm</h3>
+<h3>May 5, 2026 09:59:44 am</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -616,7 +606,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>39</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>37</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -635,7 +625,7 @@
 </div></div>
 <script>
 var timeline = {
-"Dropdown Menu Interaction":16.706,"Dynamic Table and Data Validation":3.959,"Form Submission and Validation":5.13,"Input Field Validation":3.83
+"Select Menu Interaction":3.817,"Dynamic Table and Data Validation":3.084,"Form Submission and Validation":3.843,"Input Field Validation":3.446
 };
 </script>
 <div class="row">
@@ -655,7 +645,7 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 39,
+passGrandChild: 37,
 failGrandChild: 0,
 warningGrandChild: 0,
 skipGrandChild: 0,

@@ -7,14 +7,12 @@ Feature: Form Submission and Validation
     And I submit the form
     Then I should see the success message "Form submitted"
 
-  Scenario: Invalid - Submit form without filling any field
+  Scenario: Invalid - Attempt to type into disabled input
     Given I am on the selenium web form
-    When I clear all form fields
-    And I submit the form
-    Then I should see the success message "Form submitted"
+    When I attempt to type "Disabled" into the disabled input
+    Then the disabled input value should remain empty
 
-  Scenario: Invalid - Enter only spaces in text field
+  Scenario: Invalid - Attempt to edit readonly input
     Given I am on the selenium web form
-    When I enter text "   " in the text field
-    And I submit the form
-    Then I should see the success message "Form submitted"
+    When I attempt to type "Changed" into the readonly input
+    Then the readonly input value should remain "Readonly input"

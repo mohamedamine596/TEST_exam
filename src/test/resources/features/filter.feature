@@ -5,12 +5,12 @@ Feature: Dynamic Table and Data Validation
     When the table loads
     Then the table should contain at least one row
 
-  Scenario: Invalid - Verify table header exists
+  Scenario: Invalid - Header should not contain fake column
     Given I am on the selenium dynamic table page
     When the table loads
-    Then the table header row should be present
+    Then the table header row should not contain "NotAHeader"
 
-  Scenario: Invalid - Table data changes on refresh
+  Scenario: Invalid - Table contains unexpected data
     Given I am on the selenium dynamic table page
-    When I refresh the page
-    Then the table should still be present after refresh
+    When the table loads
+    Then the table should not contain the text "NotInTable"

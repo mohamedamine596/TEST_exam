@@ -3,53 +3,53 @@ package steps;
 import hooks.Hooks;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+import pages.DropdownPage;
 
 public class CartSteps {
 
-    private WebDriverWait getWait() {
-        return new WebDriverWait(Hooks.driver, Duration.ofSeconds(10));
+    private DropdownPage dropdownPage;
+
+    private DropdownPage getDropdownPage() {
+        if (dropdownPage == null) {
+            dropdownPage = new DropdownPage(Hooks.driver);
+        }
+        return dropdownPage;
     }
 
     @Given("I am on the selenium dropdown page")
     public void iAmOnDropdownPage() {
-        Hooks.driver.get(
-                "https://www.selenium.dev/selenium/web/dropdown_menu.html");
-        getWait().until(ExpectedConditions.urlContains("dropdown"));
+        getDropdownPage().open();
     }
 
-    @When("I hover over the dropdown menu")
-    public void hoverOverDropdown() {
-        try {
-            Actions actions = new Actions(Hooks.driver);
-            WebDriverWait w = getWait();
-            // try any visible element on the page to hover
-            actions.moveToElement(
-                    w.until(ExpectedConditions.presenceOfElementLocated(
-                            By.tagName("body")))).perform();
-        } catch (Exception e) {
-            // continue
-        }
+    @Given("I am on the selenium select page")
+    public void iAmOnSelectPage() {
+        getDropdownPage().open();
     }
 
-    @When("I click menu item {string}")
-    public void clickMenuItem(String item) {
-        try {
-            Hooks.driver.findElement(By.linkText(item)).click();
-        } catch (Exception e) {
-            // item may not exist
-        }
+    @When("I select {string} from the simple select")
+    public void selectFromSimple(String option) {
+        getDropdownPage().selectSimpleOption(option);
     }
 
-    @Then("the page should still be accessible")
-    public void pageShouldBeAccessible() {
-        Assert.assertNotNull(Hooks.driver.getTitle());
-        Assert.assertTrue(
-                Hooks.driver.getCurrentUrl().contains("selenium.dev"));
+    @Then("the selected option should be {string}")
+    public void selectedOptionShouldBe(String option) {
+        Assert.assertEquals(
+                "Selected option mismatch",
+                option,
+                getDropdownPage().getSelectedSimpleOption());
+    }
+
+    @When("I try to select disabled option {string}")
+    public void trySelectDisabledOption(String option) {
+        getDropdownPage().trySelectVisibilityOption(option);
+    }
+
+    @Then("the selected option should remain {string}")
+    public void selectedOptionShouldRemain(String option) {
+        Assert.assertEquals(
+                "Disabled option should not change selection",
+                option,
+                getDropdownPage().getSelectedVisibilityOption());
     }
 
     @Given("I navigate to a nonexistent selenium page")
@@ -71,8 +71,8 @@ public class CartSteps {
 
     @Then("the dropdown items should not be visible initially")
     public void dropdownItemsNotVisibleInitially() {
-        // Just verify page loaded correctly
-        Assert.assertTrue(
-                Hooks.driver.getCurrentUrl().contains("dropdown"));
+        Assert.assertEquals(
+                "Regular",
+                getDropdownPage().getSelectedVisibilityOption());
     }
 }

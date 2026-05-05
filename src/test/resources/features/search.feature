@@ -5,12 +5,12 @@ Feature: Input Field Validation
     When I type "Hello World" into the input field
     Then the input field value should be "Hello World"
 
-  Scenario: Invalid - Input field with numbers only
+  Scenario: Invalid - Number input rejects letters
     Given I am on the selenium inputs page
-    When I type "12345" into the input field
-    Then the input field value should be "12345"
+    When I type "abc" into the number input
+    Then the number input value should be empty
 
-  Scenario: Invalid - Input field with special characters
+  Scenario: Invalid - Email input without at sign
     Given I am on the selenium inputs page
-    When I type "!@#$%^" into the input field
-    Then the input field value should be "!@#$%^"
+    When I type "invalid-email" into the email input
+    Then the email input should be invalid

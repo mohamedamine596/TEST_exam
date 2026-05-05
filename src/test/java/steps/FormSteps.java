@@ -3,55 +3,72 @@ package steps;
 import hooks.Hooks;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+import pages.FormPage;
 
 public class FormSteps {
 
-    private WebDriverWait getWait() {
-        return new WebDriverWait(Hooks.driver, Duration.ofSeconds(10));
+    private FormPage formPage;
+
+    private FormPage getFormPage() {
+        if (formPage == null) {
+            formPage = new FormPage(Hooks.driver);
+        }
+        return formPage;
     }
 
     @Given("I am on the selenium web form")
     public void iAmOnWebForm() {
-        Hooks.driver.get(
-                "https://www.selenium.dev/selenium/web/web-form.html");
-        getWait().until(ExpectedConditions.titleIs("Web form"));
+        getFormPage().open();
     }
 
     @When("I enter text {string} in the text field")
     public void enterText(String text) {
-        getWait().until(ExpectedConditions.visibilityOfElementLocated(
-                By.id("my-text-id"))).clear();
-        Hooks.driver.findElement(By.id("my-text-id")).sendKeys(text);
+        getFormPage().enterText(text);
     }
 
     @When("I enter password {string} in the password field")
     public void enterPassword(String password) {
-        Hooks.driver.findElement(By.name("my-password")).clear();
-        Hooks.driver.findElement(By.name("my-password")).sendKeys(password);
+        getFormPage().enterPassword(password);
     }
 
     @When("I clear all form fields")
     public void clearAllFields() {
-        Hooks.driver.findElement(By.id("my-text-id")).clear();
-        Hooks.driver.findElement(By.name("my-password")).clear();
-        Hooks.driver.findElement(By.name("my-textarea")).clear();
+        getFormPage().clearAllFields();
+    }
+
+    @When("I attempt to type {string} into the disabled input")
+    public void attemptTypeIntoDisabled(String text) {
+        getFormPage().attemptTypeDisabled(text);
+    }
+
+    @Then("the disabled input value should remain empty")
+    public void disabledInputShouldRemainEmpty() {
+        Assert.assertTrue(
+                "Disabled input should remain empty",
+                getFormPage().getDisabledValue().isEmpty());
+    }
+
+    @When("I attempt to type {string} into the readonly input")
+    public void attemptTypeIntoReadonly(String text) {
+        getFormPage().attemptTypeReadonly(text);
+    }
+
+    @Then("the readonly input value should remain {string}")
+    public void readonlyInputShouldRemain(String expected) {
+        Assert.assertEquals(
+                "Readonly input should not change",
+                expected,
+                getFormPage().getReadonlyValue());
     }
 
     @When("I submit the form")
     public void submitForm() {
-        Hooks.driver.findElement(
-                By.cssSelector("button[type='submit']")).click();
+        getFormPage().submitForm();
     }
 
     @Then("I should see the success message {string}")
     public void seeSuccessMessage(String message) {
-        getWait().until(ExpectedConditions.visibilityOfElementLocated(
-                By.id("message")));
-        String actual = Hooks.driver.findElement(By.id("message")).getText();
+        String actual = getFormPage().getSuccessMessage();
         Assert.assertFalse("Page should show a message", actual.isEmpty());
     }
 }
